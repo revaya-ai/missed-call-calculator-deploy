@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { formatCurrency, formatNumber } from '@/lib/calculations';
 import { generatePDF } from '@/lib/pdfGenerator';
 import { updatePDFDownloaded } from '@/lib/supabase';
@@ -13,6 +13,11 @@ interface ResultsDisplayProps {
 
 export function ResultsDisplay({ results, answers }: ResultsDisplayProps) {
   const [showTooltip, setShowTooltip] = useState(false);
+
+  // Notify parent window when results are displayed (for iframe resizing)
+  useEffect(() => {
+    window.parent.postMessage('showResults', '*');
+  }, []);
 
   // Calculate gaps for perception vs reality
   const answerRateGap = results.perceivedAnswerRate - results.realisticAnswerRate;

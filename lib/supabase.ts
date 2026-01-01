@@ -13,7 +13,39 @@ if (!supabaseUrl || !supabaseAnonKey) {
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 // Helper function to submit calculator data
-export async function submitCalculation(data: any) {
+export async function submitCalculation(data: {
+  name: string;
+  email: string;
+  businessName?: string;
+  industry: string;
+  callsPerWeek: number;
+  answerPercentage: number;
+  phoneCoverage: string;
+  jobValue: number;
+  closeRate: number;
+  monthlySpending: number;
+  monthlyCallVolume: number;
+  perceivedAnswerRate: number;
+  realisticAnswerRate: number;
+  perceivedMissedCallsWeekly: number;
+  perceivedMissedCallsMonthly: number;
+  actualMissedCallsWeekly: number;
+  actualMissedCallsMonthly: number;
+  newBusinessMissedMonthly: number;
+  lostCustomersMonthly: number;
+  lostRevenueMonthly: number;
+  lostRevenueAnnual: number;
+  aiMissedCallsWeekly: number;
+  aiMissedCallsMonthly: number;
+  revenueRecoveredMonthly: number;
+  revenueRecoveredAnnual: number;
+  costPerAnsweredCall: number | null;
+  actualAnswerRate: number;
+  dailyMissedCalls: number;
+  monthlyMissedCalls: number;
+  monthlyLostRevenue: number;
+  annualLostRevenue: number;
+}) {
   // Map our app data structure to database column names
   const dbData = {
     // User info

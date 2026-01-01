@@ -87,7 +87,7 @@ export function generatePDF(results: CalculationResults, answers: QuizAnswers): 
     margin: { left: 20, right: 20 }
   });
 
-  yPosition = (doc as any).lastAutoTable.finalY + 15;
+  yPosition = (doc as typeof doc & { lastAutoTable: { finalY: number } }).lastAutoTable.finalY + 15;
 
   // Section 2: What This Is Costing You
   doc.setFontSize(14);

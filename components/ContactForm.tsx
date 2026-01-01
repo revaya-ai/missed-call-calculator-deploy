@@ -25,7 +25,7 @@ export function ContactForm({
         Almost there! Get your personalized results
       </h2>
       <p className="text-revaya-medium-gray mb-8">
-        See exactly how much revenue you're losing and what you can do about it
+        See exactly how much revenue you&apos;re losing and what you can do about it
       </p>
 
       <div className="space-y-4">

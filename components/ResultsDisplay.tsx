@@ -47,7 +47,7 @@ export function ResultsDisplay({ results, answers }: ResultsDisplayProps) {
       {/* SUMMARY SECTION */}
       <div className="text-center py-10 animate-fadeIn" style={{ animationDelay: '100ms' }}>
         <h2 className="text-2xl md:text-3xl font-semibold text-revaya-dark-gray mb-2">
-          You're potentially losing
+          You&apos;re potentially losing
         </h2>
 
         <div className="mb-1">
@@ -70,8 +70,8 @@ export function ResultsDisplay({ results, answers }: ResultsDisplayProps) {
             Reality Check
           </h3>
           <p className="text-base text-gray-700 leading-relaxed">
-            You think you're answering <span className="font-semibold text-revaya-purple">{results.perceivedAnswerRate}%</span> of calls,
-            but based on your coverage setup ({answers.phoneCoverage}), you're likely answering closer to{' '}
+            You think you&apos;re answering <span className="font-semibold text-revaya-purple">{results.perceivedAnswerRate}%</span> of calls,
+            but based on your coverage setup ({answers.phoneCoverage}), you&apos;re likely answering closer to{' '}
             <span className="font-semibold text-revaya-purple">{formatNumber(results.realisticAnswerRate)}%</span>.
           </p>
         </div>

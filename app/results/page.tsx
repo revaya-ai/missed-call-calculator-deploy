@@ -1,12 +1,10 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
 import { ResultsDisplay } from '@/components/ResultsDisplay';
 import type { QuizAnswers, CalculationResults } from '@/types/quiz';
 
 export default function ResultsPage() {
-  const router = useRouter();
   const [resultsData, setResultsData] = useState<{
     answers: QuizAnswers;
     results: CalculationResults;

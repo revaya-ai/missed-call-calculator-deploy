@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { QuizProgress } from '@/components/QuizProgress';
@@ -12,7 +12,7 @@ import { useQuizState } from '@/hooks/useQuizState';
 import { QUIZ_QUESTIONS, INDUSTRY_DEFAULTS } from '@/lib/constants';
 import { calculateROI } from '@/lib/calculations';
 import { submitCalculation } from '@/lib/supabase';
-import type { QuizAnswers } from '@/types/quiz';
+import type { QuizAnswers, IndustryType, PhoneCoverage } from '@/types/quiz';
 
 const TOTAL_QUESTIONS = 8; // 7 quiz questions + 1 contact form
 
@@ -33,7 +33,13 @@ export default function QuizPage() {
 
   // Auto-progress when dropdown is selected
   const handleDropdownChange = (key: keyof QuizAnswers, value: string) => {
-    updateAnswer(key as any, value);
+    if (key === 'industry') {
+      updateAnswer(key, value as IndustryType);
+    } else if (key === 'phoneCoverage') {
+      updateAnswer(key, value as PhoneCoverage);
+    } else {
+      return;
+    }
 
     // If industry is selected, auto-fill job value and close rate with defaults
     if (key === 'industry' && value && INDUSTRY_DEFAULTS[value]) {
@@ -50,7 +56,10 @@ export default function QuizPage() {
 
   // Handle slider change (no auto-progress, user must click Next)
   const handleSliderChange = (key: keyof QuizAnswers, value: number) => {
-    updateAnswer(key as any, value);
+    if (key === 'callsPerWeek' || key === 'answerPercentage' || key === 'jobValue' ||
+        key === 'closeRate' || key === 'monthlySpending') {
+      updateAnswer(key, value);
+    }
   };
 
   // Check if current question is answered

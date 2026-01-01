@@ -7,11 +7,11 @@ export function generatePDF(results: CalculationResults, answers: QuizAnswers): 
   const doc = new jsPDF();
 
   // Set up fonts and colors
-  const purpleColor = [59, 61, 159]; // #3B3D9F
-  const darkGray = [31, 41, 55]; // #1F2937
-  const mediumGray = [107, 114, 128]; // #6B7280
-  const redColor = [239, 68, 68]; // #EF4444
-  const tealColor = [20, 184, 166]; // #14B8A6
+  const purpleColor: [number, number, number] = [59, 61, 159]; // #3B3D9F
+  const darkGray: [number, number, number] = [31, 41, 55]; // #1F2937
+  const mediumGray: [number, number, number] = [107, 114, 128]; // #6B7280
+  const redColor: [number, number, number] = [239, 68, 68]; // #EF4444
+  const tealColor: [number, number, number] = [20, 184, 166]; // #14B8A6
 
   let yPosition = 20;
 

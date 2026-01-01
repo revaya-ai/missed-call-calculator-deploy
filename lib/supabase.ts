@@ -17,10 +17,10 @@ export async function submitCalculation(data: {
   name: string;
   email: string;
   businessName?: string;
-  industry: string;
+  industry: string | null;
   callsPerWeek: number;
   answerPercentage: number;
-  phoneCoverage: string;
+  phoneCoverage: string | null;
   jobValue: number;
   closeRate: number;
   monthlySpending: number;

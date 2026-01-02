@@ -21,6 +21,24 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Disable all auto-scroll behavior when in iframe
+  useEffect(() => {
+    // Disable scroll restoration
+    if (typeof window !== 'undefined') {
+      window.history.scrollRestoration = 'manual';
+    }
+
+    // Prevent any scroll behavior when in iframe
+    if (window.self !== window.top) {
+      const originalScrollTo = window.scrollTo;
+      window.scrollTo = () => {}; // Disable scrollTo when in iframe
+
+      return () => {
+        window.scrollTo = originalScrollTo; // Restore on cleanup
+      };
+    }
+  }, []);
+
   // A) Initial page load - send height after mount
   useEffect(() => {
     notifyParentOfHeight();

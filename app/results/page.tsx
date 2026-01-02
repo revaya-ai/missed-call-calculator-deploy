@@ -11,6 +11,13 @@ export default function ResultsPage() {
   } | null>(null);
   const [loading, setLoading] = useState(true);
 
+  // Prevent any scroll behavior when in iframe
+  useEffect(() => {
+    if (window.self !== window.top) {
+      window.scrollTo = () => {};
+    }
+  }, []);
+
   useEffect(() => {
     // Get results from sessionStorage
     const storedData = sessionStorage.getItem('calculatorResults');

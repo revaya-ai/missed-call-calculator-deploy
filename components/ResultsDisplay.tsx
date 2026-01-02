@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { formatCurrency, formatNumber } from '@/lib/calculations';
 import { generatePDF } from '@/lib/pdfGenerator';
 import { updatePDFDownloaded } from '@/lib/supabase';
+import { notifyParentOfHeight } from '@/lib/iframe-utils';
 import type { CalculationResults, QuizAnswers } from '@/types/quiz';
 
 interface ResultsDisplayProps {
@@ -14,9 +15,14 @@ interface ResultsDisplayProps {
 export function ResultsDisplay({ results, answers }: ResultsDisplayProps) {
   const [showTooltip, setShowTooltip] = useState(false);
 
-  // Notify parent window when results are displayed (for iframe resizing)
+  // C) When results page displays - send height immediately and after render
   useEffect(() => {
-    window.parent.postMessage('showResults', '*');
+    // Send height immediately
+    notifyParentOfHeight();
+
+    // Send again after render completes
+    setTimeout(notifyParentOfHeight, 200);
+    setTimeout(notifyParentOfHeight, 500);
   }, []);
 
   // Calculate gaps for perception vs reality

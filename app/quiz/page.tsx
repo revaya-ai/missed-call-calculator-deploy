@@ -12,6 +12,7 @@ import { useQuizState } from '@/hooks/useQuizState';
 import { QUIZ_QUESTIONS, INDUSTRY_DEFAULTS } from '@/lib/constants';
 import { calculateROI } from '@/lib/calculations';
 import { submitCalculation } from '@/lib/supabase';
+import { notifyParentOfHeight } from '@/lib/iframe-utils';
 import type { QuizAnswers, IndustryType, PhoneCoverage } from '@/types/quiz';
 
 const TOTAL_QUESTIONS = 8; // 7 quiz questions + 1 contact form
@@ -51,6 +52,8 @@ export default function QuizPage() {
     // Auto-progress after a short delay
     setTimeout(() => {
       nextQuestion();
+      // B) Notify parent of height after question navigation
+      setTimeout(notifyParentOfHeight, 100);
     }, 300);
   };
 
@@ -60,6 +63,19 @@ export default function QuizPage() {
         key === 'closeRate' || key === 'monthlySpending') {
       updateAnswer(key, value);
     }
+  };
+
+  // Handle next button click with height notification
+  const handleNext = () => {
+    nextQuestion();
+    // B) Notify parent of height after question navigation
+    setTimeout(notifyParentOfHeight, 100);
+  };
+
+  // Handle previous button click with height notification
+  const handlePrevious = () => {
+    prevQuestion();
+    setTimeout(notifyParentOfHeight, 100);
   };
 
   // Check if current question is answered
@@ -193,7 +209,7 @@ export default function QuizPage() {
               formatValue={question.formatValue}
             />
             <div className="mt-8 flex justify-center">
-              <Button onClick={nextQuestion} disabled={!isCurrentQuestionAnswered()}>
+              <Button onClick={handleNext} disabled={!isCurrentQuestionAnswered()}>
                 Next
               </Button>
             </div>
@@ -244,7 +260,7 @@ export default function QuizPage() {
                 href="#"
                 onClick={(e) => {
                   e.preventDefault();
-                  prevQuestion();
+                  handlePrevious();
                 }}
                 className="flex items-center text-revaya-purple hover:text-revaya-purple-dark font-medium"
               >

@@ -3,10 +3,10 @@ import { Button } from '@/components/ui/Button';
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 py-12 bg-white">
+    <div className="min-h-screen flex items-center justify-center px-4 py-12 bg-white pt-5">
       <div className="max-w-4xl w-full text-center">
         {/* Headline with purple emphasis */}
-        <h1 className="text-xl md:text-2xl font-bold mb-6 leading-tight">
+        <h1 className="text-[30px] font-semibold mb-6 leading-tight">
           <span className="text-revaya-dark-gray">
             How Much{' '}
           </span>

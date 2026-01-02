@@ -14,10 +14,10 @@ export function Dropdown({ options, value, onChange, placeholder = 'Select an op
         value={value || ''}
         onChange={(e) => onChange(e.target.value)}
         className="w-full px-4 py-3 border-2 border-revaya-light-gray rounded-lg
-          focus:outline-none focus:ring-2 focus:ring-revaya-purple focus:border-revaya-purple
+          focus:outline-none focus:ring-2 focus:ring-revaya-teal focus:border-revaya-teal
           hover:border-revaya-teal
-          transition-all duration-200 text-lg font-medium text-revaya-dark-gray
-          bg-white cursor-pointer"
+          transition-all duration-200 text-base font-normal text-revaya-dark-gray
+          bg-white cursor-pointer shadow-sm focus:shadow-md"
       >
         <option value="" disabled>
           {placeholder}

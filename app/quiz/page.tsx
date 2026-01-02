@@ -183,7 +183,7 @@ export default function QuizPage() {
 
     return (
       <div className="w-full">
-        <h2 className="text-2xl md:text-3xl font-bold text-revaya-dark-gray mb-8">
+        <h2 className="text-lg font-semibold text-revaya-dark-gray mb-8">
           {question.questionText}
         </h2>
 
@@ -240,7 +240,7 @@ export default function QuizPage() {
   const isSliderQuestion = currentQ?.type === 'slider';
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 py-12 bg-white">
+    <div className="min-h-screen flex items-center justify-center px-4 py-12 bg-white pt-5">
       <div className="max-w-3xl w-full">
         {/* Progress Bar */}
         <QuizProgress

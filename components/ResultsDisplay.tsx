@@ -44,10 +44,10 @@ export function ResultsDisplay({ results, answers }: ResultsDisplayProps) {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto space-y-8">
+    <div className="w-full max-w-4xl mx-auto space-y-8 pt-5">
       {/* Page Header */}
       <div className="text-center mb-8 animate-fadeIn">
-        <h1 className="text-3xl md:text-4xl font-bold text-revaya-dark-gray mb-3">
+        <h1 className="text-[30px] font-semibold text-revaya-dark-gray mb-3">
           Your Missed Call Reality
         </h1>
         <p className="text-lg text-revaya-medium-gray">
@@ -57,7 +57,7 @@ export function ResultsDisplay({ results, answers }: ResultsDisplayProps) {
 
       {/* SUMMARY SECTION */}
       <div className="text-center py-10 animate-fadeIn" style={{ animationDelay: '100ms' }}>
-        <h2 className="text-2xl md:text-3xl font-semibold text-revaya-dark-gray mb-2">
+        <h2 className="text-[30px] font-semibold text-revaya-dark-gray mb-2">
           You&apos;re potentially losing
         </h2>
 
@@ -176,13 +176,13 @@ export function ResultsDisplay({ results, answers }: ResultsDisplayProps) {
         <div className="bg-red-50 border-2 border-red-200 rounded-lg p-4">
           <div className="flex justify-between items-baseline mb-2">
             <span className="text-base font-semibold text-revaya-dark-gray">Monthly</span>
-            <span className="text-2xl md:text-3xl font-bold text-red-600">
+            <span className="text-lg font-semibold text-red-600">
               {formatCurrency(results.lostRevenueMonthly)}
             </span>
           </div>
           <div className="flex justify-between items-baseline">
             <span className="text-base font-semibold text-revaya-dark-gray">Annual</span>
-            <span className="text-2xl md:text-3xl font-bold text-red-600">
+            <span className="text-lg font-semibold text-red-600">
               {formatCurrency(results.lostRevenueAnnual)}
             </span>
           </div>
@@ -237,13 +237,13 @@ export function ResultsDisplay({ results, answers }: ResultsDisplayProps) {
         <div className="bg-teal-50 border-2 border-teal-200 rounded-lg p-4">
           <div className="flex justify-between items-baseline mb-2">
             <span className="text-base font-semibold text-revaya-dark-gray">Recovered</span>
-            <span className="text-2xl md:text-3xl font-bold text-teal-600">
+            <span className="text-lg font-semibold text-teal-600">
               {formatCurrency(results.revenueRecoveredMonthly)}/mo
             </span>
           </div>
           <div className="flex justify-between items-baseline">
             <span className="text-base font-semibold text-revaya-dark-gray">Annual</span>
-            <span className="text-2xl md:text-3xl font-bold text-teal-600">
+            <span className="text-lg font-semibold text-teal-600">
               {formatCurrency(results.revenueRecoveredAnnual)}/yr
             </span>
           </div>
